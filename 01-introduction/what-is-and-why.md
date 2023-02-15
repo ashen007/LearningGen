@@ -1,29 +1,35 @@
-## 1. What is Gen?
+## 1. probabilistic modeling
+
+### 1.1. generative models
+
+### 1.2. inference task
+
+## 2. What is Gen?
 
 Gen is general purpose probabilistic programming language. it's universal meaning that it support any model,
 including stochastic structured models, discrete and continues random variable models and simulators. if we consider
 some of those types to more details,
 
-### 1.1. stochastic structured models
+### 2.1. stochastic structured models
 
 These types of modeling approach brings probability factor in to calculations. they are consists of random variables
 and uncertainty parameters meaning it will consider every possible outcome. these models must cover all points of
 uncertainty to draw the correct probability distribution because it's accuracy will depend on that. famous examples
 for this type of modeling are monte carlo and cellular automation.
 
-### 1.2. discrete and continues models
+### 2.2. discrete and continues models
 
 Models which involves with either discrete random variables or continues random variables. in contrast, if random
 variable only has countable number of distinct values called as discrete random variables, if random variable only has
 continues values meaning they are uncountable called as continues random variables.
 
-### 1.3. simulators
+### 2.3. simulators
 
 Simulators use to study probability characteristics of statistical estimates when theoretical distribution is unknown
 but
 simulators can help to obtain in a closed form of that theoretical distribution.
 
-## 2. Why Gen?
+## 3. Why Gen?
 
 Gen distinguished from other PPLs because it's flexible enough to customize the inference algorithm to meet users
 requirements. meanwhile it provide very easy to use compact interface to build models and if users need more scalable
@@ -37,7 +43,7 @@ other than flexibility gen focused on,
 - Even packages had universal model support provide limited set of inference algorithms
 - Fast converging
 
-### 2.1. inference algorithms
+### 3.1. inference algorithms
 
 no matter if $p(\theta \mid X)$ is going to calculate on discrete random variable which will be the summation of in
 marginalization or continues random variable where integral of in marginalization it will be impossible except very 
@@ -62,7 +68,7 @@ $${p(\theta^{\ast}\mid X)\over p(\theta\mid X)} = {{{p(X\mid\theta^{\ast})p(\the
   is totally physics simulation you can found more details in [here](https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/).
 
 
-### 2.2. How Flexibility Rewards?
+### 3.2. How Flexibility Rewards?
 
 some modeling capabilities enables by gen's flexibility are,
 
@@ -79,7 +85,7 @@ some modeling capabilities enables by gen's flexibility are,
 - graphic and physics engines
 - planning and reinforcement learning
 
-### 2.3. eco-system
+### 3.3. eco-system
 
 - Gen:
   The main Gen package. Contains the core abstract data types for models and traces.
