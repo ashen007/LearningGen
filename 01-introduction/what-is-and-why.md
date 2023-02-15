@@ -53,7 +53,7 @@ there are a lot of those algorithms,
 - Metropolis: Use gradient to find direction of higher probability density.
   try to cancel out the denominator using acceptance criteria which is,
   
-$${p(\theta^*\mid X)\over p(\theta\mid X)} = {{{p(X\mid\theta^*)p(\theta)}\over p(X)} \over {{p(X\mid\theta)p(\theta)}\over p(X)}}$$
+$${p(\theta^{\ast}\mid X)\over p(\theta\mid X)} = {{{p(X\mid\theta^{\ast})p(\theta)}\over p(X)} \over {{p(X\mid\theta)p(\theta)}\over p(X)}}$$
 
   it is easy to use with symmetrical distributions, what metropolis-hasting dose is generalize this to work with 
   non-symmetrical distributions.
