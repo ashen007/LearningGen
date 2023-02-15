@@ -2,7 +2,21 @@
 
 ### 1.1. generative models
 
+uncertain domain knowledge representation using joint probability distribution on variables which has known values
+(observations variables) and variables which has unknown values (latent variables). these are build on combination of 
+prior knowledge and empirical evidence.
+
 ### 1.2. inference task
+
+specially posterior inference, values of latent variables from values of observed variables given an assumed generative 
+model. this requires conditioning the joint distribution over latent and observed variables on the event that the 
+observed variables took certain values.
+
+forms of inference about latent variables,
+
+- samples from the conditional probability distribution
+- an analytical representation of the conditional distribution 
+- some sort of summary of the conditional distribution
 
 ## 2. What is Gen?
 
