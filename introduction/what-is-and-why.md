@@ -37,6 +37,33 @@ other than flexibility gen focused on,
 - Even packages had universal model support provide limited set of inference algorithms
 - Fast converging
 
+### 2.1. inference algorithms
+
+no matter if $p(\theta \mid X)$ is going to calculate on discrete random variable which will be the summation of in
+marginalization or continues random variable where integral of in marginalization it will be impossible except very 
+simple model meaning less than four outcomes. so inference algorithms is a way to solve this by avoiding the calculation
+of denominator in bayes statistics.
+
+there are a lot of those algorithms,
+
+- Gibbs sampling: Update each coordinates with given all other coordinate. (full probability distribution) what gibbs 
+  sampling do is move around probability distribution without any restrictions and update one parameter at a time while
+  all others are given at the moment.
+
+- Metropolis: Use gradient to find direction of higher probability density.
+  try to cancel out the denominator using acceptance criteria which is,
+  
+  $${p(\theta^*\mid X)\over p(\theta\mid X)} = {{{p(X\mid\theta^*)p(\theta)}\over p(X)} \over {{p(X\mid\theta)p(\theta)}\over p(X)}}$$
+
+  it is easy to use with symmetrical distributions, what metropolis-hasting dose is generalize this to work with 
+  non-symmetrical distributions.
+
+- Hamiltonian / NUTS (no-u turn sampling): Use auxiliary momentum and hamiltonian dynamics instead of random walk. this
+  is totally physics simulation you can found more details in [here](https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/).
+
+
+### 2.2. How Flexibility Rewards?
+
 some modeling capabilities enables by gen's flexibility are,
 
 - different approaches:
@@ -52,7 +79,7 @@ some modeling capabilities enables by gen's flexibility are,
 - graphic and physics engines
 - planning and reinforcement learning
 
-### 2.1. eco-system
+### 2.3. eco-system
 
 - Gen:
   The main Gen package. Contains the core abstract data types for models and traces.
