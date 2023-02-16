@@ -1,3 +1,20 @@
+# what and why
+
+<!-- TOC -->
+* [what and why](#what-and-why)
+  * [1. probabilistic modeling](#1-probabilistic-modeling)
+    * [1.1. generative models](#11-generative-models)
+    * [1.2. inference task](#12-inference-task)
+  * [2. What is Gen?](#2-what-is-gen)
+    * [2.1. stochastic structured models](#21-stochastic-structured-models)
+    * [2.2. discrete and continues models](#22-discrete-and-continues-models)
+    * [2.3. simulators](#23-simulators)
+  * [3. Why Gen?](#3-why-gen)
+    * [3.1. inference algorithms](#31-inference-algorithms)
+    * [3.2. How Flexibility Rewards?](#32-how-flexibility-rewards)
+    * [3.3. eco-system](#33-eco-system)
+<!-- TOC -->
+
 ## 1. probabilistic modeling
 
 ### 1.1. generative models
