@@ -104,3 +104,10 @@ key takeaways from abstract data types,
 - even through gen has multiple PPL, they all generate the same abstract data types but has different tradeoffs
 - gen's design allows to more efficient implementations of abstract data types and analyzing, compiling, optimizing and
   high-level user inference code
+
+#### 2.2.3. how gen differ from other systems
+
+- provide comparable abstract data types for probabilistic models and execution traces
+- supports multiple interoperable PPL
+- supports lot of efficient inference techniques
+- supports custom proposal distributions (a proposal distribution is used to enable sampling from a known distribution)
