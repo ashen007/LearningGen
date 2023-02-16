@@ -95,3 +95,12 @@ There are two of them,
   - update values of some subset of the random variables
 
 these are abstract data types so users do not need to worry about there internal behaviors and implementations.
+
+key takeaways from abstract data types,
+
+- provide set of primitive operations for implementing inference algorithms. (including generating execution trace, 
+  querying executions trace and gradients of the values of random variables, updating execution trace)
+- typically they will automatically implement, of course unless user need to change it to meet their need
+- even through gen has multiple PPL, they all generate the same abstract data types but has different tradeoffs
+- gen's design allows to more efficient implementations of abstract data types and analyzing, compiling, optimizing and
+  high-level user inference code
