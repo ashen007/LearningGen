@@ -1,4 +1,6 @@
-## 1. dynamic modeling language
+## 1. language concepts in julia
+
+### 1.1. dynamic modeling language
 
 this extends the syntax of the julia language it's called as _labeled random choice expression_, the left side of the 
 expression encodes a dynamically computed address for randomly chosen values. right side of the expression encodes a 
@@ -65,3 +67,18 @@ using Gen: uniform_discrete, bernoulli, categorical, @gen
     
 end
 ```
+
+### 1.2. trace and generative functions
+
+semantics in gen is consists of two sections.
+
+- dictionaries (trace): intercept program execution (random choice expressions) and record the randomly sampled value 
+  for each random choice in a dictionary, which maps addresses of random choices to their values (there can not be use 
+  same address twice in an execution, also program needs to ends with probability of 1)
+
+- function to map dictionaries (generative function): function that maps dictionary (trace) to return values of the 
+  program.
+
+note: most notable difference between gen and other PPL which use trace-based semantics is gen's user defined addresses 
+for random choices because gen allows users to write inference code that refers specific random choices by their 
+addresses.
