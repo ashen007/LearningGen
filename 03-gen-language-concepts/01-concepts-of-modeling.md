@@ -2,9 +2,9 @@
 
 ### 1.1. dynamic modeling language
 
-this extends the syntax of the julia language it's called as _labeled random choice expression_, the left side of the 
-expression encodes a dynamically computed address for randomly chosen values. right side of the expression encodes a 
-probability distribution from which the value should be sampled. it is an error to use this syntax with the same 
+this extends the syntax of the julia language it's called as _labeled random choice expression_, the left side of the
+expression encodes a dynamically computed address for randomly chosen values. right side of the expression encodes a
+probability distribution from which the value should be sampled. it is an error to use this syntax with the same
 address twice. addresses can be arbitrary Julia values.
 
 ```julia
@@ -13,7 +13,7 @@ address twice. addresses can be arbitrary Julia values.
 
 a ~ bernoulli(0.5) is equivalent to a = ({:a} ~ bernoulli(0.5)), `:a` is a julia symbol
 
-users of gen can use these random choice expressions, julia expressions and julia control flow to construct a 
+users of gen can use these random choice expressions, julia expressions and julia control flow to construct a
 probabilistic models.
 
 some examples,
@@ -72,13 +72,135 @@ end
 
 semantics in gen is consists of two sections.
 
-- dictionaries (trace): intercept program execution (random choice expressions) and record the randomly sampled value 
-  for each random choice in a dictionary, which maps addresses of random choices to their values (there can not be use 
+- dictionaries (trace): intercept program execution (random choice expressions) and record the randomly sampled value
+  for each random choice in a dictionary, which maps addresses of random choices to their values (there can not be use
   same address twice in an execution, also program needs to ends with probability of 1)
 
-- function to map dictionaries (generative function): function that maps dictionary (trace) to return values of the 
+- function to map dictionaries (generative function): function that maps dictionary (trace) to return values of the
   program.
 
-note: most notable difference between gen and other PPL which use trace-based semantics is gen's user defined addresses 
-for random choices because gen allows users to write inference code that refers specific random choices by their 
+note: most notable difference between gen and other PPL which use trace-based semantics is gen's user defined addresses
+for random choices because gen allows users to write inference code that refers specific random choices by their
 addresses.
+
+### 1.3. operations supported by abstract data types
+
+- simulation operation
+
+it is an operation of a generative function. it takes generative function as argument and values for parameters of the
+generative function, samples a dictionary of random choices according to the distribution and returns trace.
+
+```julia
+using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate
+
+@gen function f(p)
+    """simple generative function"""
+    
+    n = {:init_n} ~ uniform_discrete(1, 10)
+    
+    return {:result} ~ categorical([i == n ? 0.5 : 0.5/19 for (i=1:20)])
+    
+end
+
+trace = simulate(f, (0.4,))
+```
+
+- generate operation
+
+generate also an operation supported by generative functions. it will return an execution trace, but it did not sample
+like simulation operation, it takes samples as input and returned trace and weights. generates use for generate trace
+that satisfy set of constraints on the values of random choices. its ability is extended to take a partial dictionary
+that only contains some of the choices and fill the rest stochastically.
+
+```julia
+using Gen: uniform_discrete, bernoulli, categorical, @gen, choicemap, generate
+
+@gen function f(p)
+    """simple generative function"""
+    
+    val = true
+    
+    if ({:a} ~ bernoulli(prob_a))
+        val = ({:b} ~ bernoulli(0.6)) && val
+        
+    end
+    
+    prob_c = val ? 0.9 : 0.2
+    val = ({:c} ~ bernoulli(prob_c)) && val
+    
+    return val
+    
+end
+
+constraints = choicemap((:a, true), (:c, false))
+(trace, weight) = generate(f, (0.4,), constraints)
+```
+
+- logpdf operation
+
+it is an operation supported by trace. which returns the log probability that the random choices in the trace would have
+been sampled. this typically the sum of log-probabilities for each random choice.
+
+- choices operation
+
+this is also an operation supported by traces. which simply return choices of a given trace meaning this take trace as
+input. choice map, maps from the addresses of random choices to their values. it stored in associative tree structure
+data structure (simply a dictionary).
+
+```julia
+using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate, get_choices
+
+@gen function f(p)
+    """simple generative function"""
+    
+    n = {:init_n} ~ uniform_discrete(1, 10)
+    
+    return {:result} ~ categorical([i == n ? 0.5 : 0.5/19 for (i=1:20)])
+    
+end
+
+trace = simulate(f, (0.4,))
+get_choices(trace)
+```
+
+- update operation
+
+this operation is also supported by traces. it is more complex operation than above operations supported by traces. this
+will take few arguments in order to execute the operation. this operation will return new execution traces. first
+argument is new arguments to the generative function which may be different from the arguments were stored in the
+initial execution trace.
+
+second argument is enables an optimization trick to the update operation. it is a change hint that provides optional
+information about the difference between initial state and new state of the generative function arguments. this will
+help to do this operation more efficiently.
+
+third argument is a dictionary that consists of addresses that include in initial trace and whose values should be
+change and also addresses are not include in the initial execution traces but need to add to new execution traces.
+
+```julia
+using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate, update, NoChange, choicemap
+
+@gen function f(p)
+    """simple generative function"""
+    
+    val = true
+    
+    if ({:a} ~ bernoulli(prob_a))
+        val = ({:b} ~ bernoulli(0.6)) && val
+        
+    end
+    
+    prob_c = val ? 0.9 : 0.2
+    val = ({:c} ~ bernoulli(prob_c)) && val
+    
+    return val
+    
+end
+
+# get initial trace
+trace = simulate(f, (0.4,))
+
+# update initial trace
+constraints = choicemap((:c, false))
+(new_trace, weight, discard, diff) = update(trace, (0.4,), (NoChange(),), constraints)
+```
