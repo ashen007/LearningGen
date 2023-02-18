@@ -1,3 +1,14 @@
+# concepts of modeling in Gen
+
+<!-- TOC -->
+* [concepts of modeling in Gen](#concepts-of-modeling-in-gen)
+  * [1. language concepts in julia](#1-language-concepts-in-julia)
+    * [1.1. dynamic modeling language](#11-dynamic-modeling-language)
+    * [1.2. trace and generative functions](#12-trace-and-generative-functions)
+    * [1.3. operations supported by abstract data types](#13-operations-supported-by-abstract-data-types)
+    * [1.4. DML and SML](#14-dml-and-sml)
+<!-- TOC -->
+
 ## 1. language concepts in julia
 
 ### 1.1. dynamic modeling language

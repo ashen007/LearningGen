@@ -1,3 +1,20 @@
+# problems and solution of the Gen
+
+<!-- TOC -->
+* [problems and solution of the Gen](#problems-and-solution-of-the-gen)
+  * [1. challenges](#1-challenges)
+    * [1.1. efficiency](#11-efficiency)
+    * [1.1.1. inference algorithm efficiency](#111-inference-algorithm-efficiency)
+    * [1.1.2. implementation efficiency](#112-implementation-efficiency)
+    * [1.2. what are the challenges to create general purpose modeling language](#12-what-are-the-challenges-to-create-general-purpose-modeling-language)
+    * [1.3. quickly, what is turing complete language?](#13-quickly-what-is-turing-complete-language)
+  * [2. what Gen do to overcome those challenges?](#2-what-gen-do-to-overcome-those-challenges)
+    * [2.2. high level overview of gen](#22-high-level-overview-of-gen)
+      * [2.2.1. key idea](#221-key-idea)
+      * [2.2.2. new data types](#222-new-data-types)
+      * [2.2.3. how gen differ from other systems](#223-how-gen-differ-from-other-systems)
+<!-- TOC -->
+
 ## 1. challenges
 
 ### 1.1. efficiency
