@@ -204,3 +204,57 @@ trace = simulate(f, (0.4,))
 constraints = choicemap((:c, false))
 (new_trace, weight, discard, diff) = update(trace, (0.4,), (NoChange(),), constraints)
 ```
+
+### 1.4. DML and SML
+
+There are two modeling languages in gen,
+
+- Dynamic Modeling Language (DML), all we so far is DML models
+- Static Modeling Language (SML)
+
+DML is used all julia syntax including recursions. Because of that it is less efficient than SML. because DML's high 
+expressiveness makes it difficult to generate more efficient generative functions and traces. but in SML it restrict the
+set of control flow constructs and have excellent static analysis to statically specialize implementation of generative 
+functions and traces to better performance. even though SML is more efficient than DML it's complex nature make it less
+user-friendly.
+
+```julia
+# DML version of hidden markov model wich has 1000 time steps and
+# A denotes the hidden state and B denote the observed state
+# this model will make 2000 random choices (1000 for :z and 1000 for :y)
+
+@gen function dynamic_f()
+  """hidden markov model describe the evaluation of observable events that depend
+  on unobservable internal factors"""
+
+  z = 1
+  
+  for i in 1:1000
+    z = ({:steps=>i=>:z}) ~ categorical(A[z, :])
+    {:steps=>i=>:y} ~ categorical(B[z,:])
+    
+  end
+  
+end
+```
+
+```julia
+# SML vervsion of hidden markov model
+# SML not supported loops insted has differnt machnism Unfold
+
+@gen (static) function static_f()
+  # has 1000 time steps as DML version
+  # this outer function use to call step function sequentially
+  steps ~ Unfold(step)(1000, 1)
+  
+end
+
+@gen (static) function step(i, prev)
+  # use same random choices as DML version
+  z ~ categorical(A[prev, :])
+  y ~ categorical(B[z,:])
+  
+  return z
+  
+end
+```
