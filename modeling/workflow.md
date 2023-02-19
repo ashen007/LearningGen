@@ -4,9 +4,11 @@
 
 ### 1.1. define generative model
 
-generative functions can be either deterministic meaning it does not has random choice expression in it or 
+generative functions can be either deterministic meaning it does not have random choice expression in it or 
 non-deterministic generative functions which has random choice expressions in it. either way generative function define
-with `@gen` macro.
+with `@gen` macro. DML version of any generative function supports branching (if-end), loops (for-end, while-end) and 
+recursions. can use `@trace` macro in generative functions which will eliminate the need of user defined addresses 
+because it will auto generate addresses from variable name.
 
 ```julia
 @gen function <function_name> (<param_1>, <param_2>, )
@@ -29,8 +31,7 @@ end
 random choice expression consists of two parts. one is the _address_ expression part and the other one is the 
 probabilistic distribution expression. it uses `~` instead of regular assignment operator. gen authors often use julia 
 symbols for address expression, but it's legal to use integers, tuples and strings. these random choice expressions can
-be use in expression evaluation like normal. DML version of any generative function supports branching (if-end), loops 
-(for-end, while-end) and recursions.
+be use in expression evaluation like normal.
 
 ```julia
 @gen function simple_gen_f(x)
@@ -124,6 +125,127 @@ end
 
 ### 1.2. define inference program
 
+inference program is a peace of julia code which use to manipulate inference model trace. how it does that is depends 
+on the inference algorithm choice. because different inference algorithms takes different set of parameters to execute 
+it.
+
+how the trace data structure implemented, how probabilities and gradients are calculating and how conditional 
+independence is exploited by the modeling language compiler are hidden to make the abstract data type operations more 
+efficient.
+
+#### 1.2.1. some inference algorithms
+
+##### 1.2.1.1 importance sampling
+
+with simple MC can get properties from a distribution but with more sophisticated implementations can sample from 
+other distributions. this other distributions called _proposal distributions_. the simplest type of MC that uses this 
+proposal distribution is _importance sampling_. proposal distributions can represent as model distributions like 
+generative functions we discussed earlier.
+
+there are different types of proposal are possible,
+
+- proposal based on prior distribution 
+- data driven proposals
+- algorithmic proposals
+- simulator-based proposals
+- neural network based proposals (fully or partially learned)
+
+there are two versions of the importance sampling in gen, returning log weights are normalised in both,
+
+- `Gen.importance_sampling`: returning a vector of traces with associated log weights. `lml_est` are the estimate of the
+                             marginal likelihood of the observations
+
+```julia
+(traces, log_norm_weights, lml_est) = importance_sampling(model::GenerativeFunction,
+                                                          model_args::Tuple, 
+                                                          observations::ChoiceMap, 
+                                                          num_samples::Int, 
+                                                          verbose=false)
+```
+
+- `Gen.importance_resampling`: returning a single trace, this sampling will not return log-weights
+
+```julia
+(trace, lml_est) = importance_resampling(model::GenerativeFunction,
+                                         model_args::Tuple, 
+                                         observations::ChoiceMap, 
+                                         num_samples::Int,
+                                         verbose=false)
+```
+
+note: proposal distribution can directly give to these functions with the use of `proposal::GenerativeFunction` and 
+`proposal_args::Tuple` parameters.
+
+two very important parameters are `num_samples` or number of samples and proposal distribution. increasing number of 
+samples will reduce error, but it comes with higher computational cost. choosing good proposal make inference algorithm 
+more efficient.
+
+example,
+
+```julia
+# generative function definition for linear regression model
+
+@gen function model(x)
+    """fitting line with data"""
+    
+    # proposal distribution in other words priors (or belifes)
+    slope = ({:slope} ~ normal(0, 1))
+    intercept = ({:intercept} ~ normal(0, 2))
+    
+    for (i, x) in enumerate(xs)
+        ({(:y, i)} ~ normal((slope * x + intercept), 0.1))
+        
+    end
+    
+end
+```
+
+```julia
+# inference program for above generative model to make inference
+
+function inf_model(model, model_args, observations, n_samples)
+    # create constrains aka condition (discussed in gen concept section)
+    obs = Gen.choicemap()
+    
+    for i in 1:length(observations)
+        obs[(:y, i)] = observations[i]
+        
+    end
+    
+    (trace, lml_est) = Gen.importance_resampling(model, model_args, observations, n_samples)
+    
+    return trace
+    
+end
+```
 
 
-### 1.3. execution of the inference program
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
