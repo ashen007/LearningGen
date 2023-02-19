@@ -328,21 +328,3 @@ function inf_model(model, model_args, observations, n_samples)
     
 end
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
