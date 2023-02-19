@@ -205,6 +205,8 @@ end
 
 function inf_model(model, model_args, observations, n_samples)
     # create constrains aka condition (discussed in gen concept section)
+    # in here our observations (y-coordinates) set as constraints for 
+    # the inference algorithm
     obs = Gen.choicemap()
     
     for i in 1:length(observations)
@@ -219,18 +221,113 @@ function inf_model(model, model_args, observations, n_samples)
 end
 ```
 
+##### 1.2.1.1 markov chain monte carlo
 
+MCMC is enables to algorithms that sample approximately from target probability distributions that are defined by 
+un-normalized density function and conditional distributions. generative function with MCMC initialize a state that 
+contains the values of latent random variables (unobserved values) and rapidly apply a stochastic kernel to this sate 
+and produce new state and keep going. one of important property of those kernels is they are stationary with respect to 
+the conditional distribution.
 
+here some of gen's stationary kernels,
 
+- `metropolis_hastings`: gen has three variant of this and the simplest one is user provide set of random choices to be
+                         updated without specifying how. second one allows user to use custom proposal or custom proposal
+                         based on neural networks that are trained via amortized inference. the last one allows user to 
+                         specify any kernel in the reversible jump MCMC framework.
 
+to perform Metropolis-Hastings update that proposes new values for the selected addresses from the internal proposal,
+```julia
+(new_trace, accepted) = metropolis_hastings(trace, 
+                                            selection::Selection;
+                                            check=false, 
+                                            observations=EmptyChoiceMap())
+```
 
+to perform Metropolis-Hastings update that proposes new values for some subset of random choices in the given trace 
+using the given proposal generative function, returning the new trace and a Bool indicating whether the move was 
+accepted or not.
 
+```julia
+(new_trace, accepted) = metropolis_hastings(trace, 
+                                            proposal::GenerativeFunction, 
+                                            proposal_args::Tuple;
+                                            check=false, 
+                                            observations=EmptyChoiceMap())
+```
 
+perform a generalized Metropolis Hastings update based on an involution on space of choice maps. returning the new trace and a Bool indicating whether the move was 
+accepted or not.
 
+```julia
+(new_trace, accepted) = metropolis_hastings(trace, 
+                                            proposal::GenerativeFunction, 
+                                            proposal_args::Tuple,
+                                            involution::Union{TraceTransformDSLProgram,Function};
+                                            check=false, 
+                                            observations=EmptyChoiceMap())
+```
 
+- `mala`: performs a Metropolis Adjusted Langevin algorithm update on a set of selected random choices.
 
+```julia
+(new_trace, accepted) = mala(trace, 
+                             selection::Selection, 
+                             tau::Real;
+                             check=false, 
+                             observations=EmptyChoiceMap())
+```
 
+- `hmc`: performs a Hamiltonian Monte Carlo update on a set of selected random choices. this is also a selection based 
+         inference operators which user need to provide set of addresses (random choices) that act on traces.
 
+```julia
+(new_trace, accepted) = hmc(trace, 
+                            selection::Selection; 
+                            L=10, eps=0.1,
+                            check=false, 
+                            observations=EmptyChoiceMap())
+```
+
+- `elliptical_slice`:  performs an elliptical slice sampling update on a selected multivariate normal random choice.
+
+```julia
+new_trace = elliptical_slice(trace, 
+                             addr, mu, cov;
+                             check=false, 
+                             observations=EmptyChoiceMap())
+```
+
+example, 
+
+```julia
+# inference program which use metropolis hastings as selection based operator
+
+function inf_model(model, model_args, observations, n_samples)
+    obs = Gen.choicemap()
+    
+    # create constrains aka condition
+    for i in 1:length(observations)
+        obs[(:y, i)] = observations[i]
+        
+    end
+    
+    # to get an initial execution trace
+    (trace, accepted) = generate(model, model_args, observations)
+    
+    # provide selected random choice to mh
+    for i in 1:n_samples
+        (trace, accepted) = metropolis_hastings(trace, select(:slope))
+        (trace, accepted) = metropolis_hastings(trace, select(:intercept))
+        
+    end
+    
+    choices = get_choices(trace)
+    
+    return (choices[:slope], choices[:intercept])
+    
+end
+```
 
 
 
