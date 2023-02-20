@@ -1,13 +1,12 @@
-===========================
 Concepts of Modeling in Gen
 ===========================
 
------------------------------
+
 1. Language Concepts in Julia
 -----------------------------
 
 1.1. Dynamic Modeling Language
-==============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 this extends the syntax of the julia language it's called as *labeled random choice expression*, the left side of the
 expression encodes a dynamically computed address for randomly chosen values. right side of the expression encodes a
@@ -80,7 +79,7 @@ some examples,
 
 
 1.2. Trace and Generative Functions
-===================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 semantics in gen is consists of two sections.
 
@@ -96,7 +95,7 @@ for random choices because gen allows users to write inference code that refers 
 addresses.
 
 1.3. Operations Supported by Abstract Data Types
-================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - simulation operation
 
@@ -223,7 +222,7 @@ change and also addresses are not include in the initial execution traces but ne
 
 
 1.4. DML and SML
-================
+~~~~~~~~~~~~~~~~
 
 There are two modeling languages in gen,
 

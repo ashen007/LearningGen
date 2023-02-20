@@ -7,7 +7,7 @@ What and Why
 ============
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Contents:
 
    What_and_why

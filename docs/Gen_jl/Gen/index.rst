@@ -7,7 +7,7 @@ Gen.jl
 ======
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    Problems_and_how_gen_solve

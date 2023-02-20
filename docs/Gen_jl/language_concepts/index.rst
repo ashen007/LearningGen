@@ -7,7 +7,7 @@ Concepts in Gen's Language
 ==========================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    Concepts_of_gen

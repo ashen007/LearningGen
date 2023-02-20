@@ -1,13 +1,12 @@
-============
 Gen Workflow
 ============
 
--------------------
+
 1. Typical Workflow
 -------------------
 
 1.1. Define Generative Model
-============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 generative functions can be either deterministic meaning it does not have random choice expression in it or
 non-deterministic generative functions which has random choice expressions in it. either way generative function define
@@ -32,7 +31,7 @@ deterministic generative functions like this,
 
 
 1.1.1. Random Choice Expressions
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 random choice expression consists of two parts. one is the _address_ expression part and the other one is the
 probabilistic distribution expression. it uses ``~`` instead of regular assignment operator. gen authors often use julia
@@ -87,7 +86,7 @@ highly discourage this invoking method.
 
 
 1.1.2. Rules For Define Generative Function With DML
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - halts with probability 1
 
@@ -131,7 +130,7 @@ an example from gen,
 
 
 1.2. Define Inference Program
-=============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 inference program is a peace of julia code which use to manipulate inference model trace. how it does that is depends
 on the inference algorithm choice. because different inference algorithms takes different set of parameters to execute
@@ -142,10 +141,10 @@ independence is exploited by the modeling language compiler are hidden to make t
 efficient.
 
 1.2.1. Some Inference Algorithms
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1.2.1.1 Importance Sampling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+'''''''''''''''''''''''''''
 
 with simple MC can get properties from a distribution but with more sophisticated implementations can sample from
 other distributions. this other distributions called *proposal distributions*. the simplest type of MC that uses this
@@ -232,7 +231,7 @@ example,
 
 
 1.2.1.2 Markov Chain Monte Carlo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''''''''''''''
 
 MCMC is enables to algorithms that sample approximately from target probability distributions that are defined by
 un-normalized density function and conditional distributions. generative function with MCMC initialize a state that

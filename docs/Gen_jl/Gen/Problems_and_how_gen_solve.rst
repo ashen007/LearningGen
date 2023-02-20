@@ -1,18 +1,18 @@
-====================================
 Problems and How Gen Over Come Those
 ====================================
 
--------------
+
 1. Challenges
 -------------
 
+
 1.1. Efficiency
-===============
+~~~~~~~~~~~~~~~
 
 this is two-way,
 
 1.1.1. Inference Algorithm Efficiency
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 inference algorithm efficiency refers to how many iterations or particles (interacting particle method) inference
 algorithm needs to produce accurate predictions. to increase inference efficiency need to tune algorithms into
@@ -20,7 +20,7 @@ particular problems. tuning into particular problems is not easy task either tha
 the language (modeling language). one way to achieve this is use of combination of multiple inference strategies.
 
 1.1.2. Implementation Efficiency
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 implementation efficiency is more a performance thing, refers to how long inference algorithm will take to run single
 iteration or with single particle. if inference algorithm is efficient in algorithm wise meaning it take small number of
@@ -32,14 +32,14 @@ inefficient in implementation wise. efficient implementations depend on,
 - incremental computation
 
 1.2. What are the Challenges to Create General Purpose Modeling Language
-============================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - designing system that flexible, fast and easy to use to create inference algorithms
 - finding representations for models that allows the system to export their special structure, traditional choices will
   not make any difference here even turing-complete languages
 
 1.3. Quickly, What is Turing complete Language?
-===============================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 simply any language if it can do anything that a turing machine can do call turing complete language. so what turing
 machines can do?
@@ -53,7 +53,6 @@ few popular examples will help,
 - `game of life`_
 .. _game of life:(https://conwaylife.com/)
 
---------------------------------------------
 2. What Gen Do to Overcome Those Challenges?
 --------------------------------------------
 
@@ -76,11 +75,12 @@ few popular examples will help,
       these tools are implements building blocks for inference algorithms only interact with model through generative
       function inference
 
-2.2. High Level Overview of Gen
-===============================
+
+2.1. High Level Overview of Gen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2.2.1. Key Idea
----------------
+^^^^^^^^^^^^^^^
 
 it is primitive data types and low-level operations. key idea is to generate code for those primitive data types and
 operations from an explicit machine-readable representation of the model user specified.
@@ -93,8 +93,8 @@ overall process is,
 this process will give us explicit definitive representation for the model, automate low level computations, easy use of
 models that possess structure uncertainty
 
-2.2.2. New Data Types
----------------------
+2.1.2. New Data Types
+^^^^^^^^^^^^^^^^^^^^^
 
 There are two of them,
 
@@ -122,8 +122,8 @@ key takeaways from abstract data types,
 - gen's design allows to more efficient implementations of abstract data types and analyzing, compiling, optimizing and
   high-level user inference code
 
-2.2.3. How Gen Differ from Other Systems
-----------------------------------------
+2.1.3. How Gen Differ from Other Systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - provide comparable abstract data types for probabilistic models and execution traces
 - supports multiple interoperable PPL

@@ -1,13 +1,12 @@
-============
 What and Why
 ============
 
--------------------------
+
 1. Probabilistic Modeling
 -------------------------
 
 1.1. Generative Models
-======================
+~~~~~~~~~~~~~~~~~~~~~~
 
 uncertain domain knowledge representation using joint probability distribution on variables which has known values
 (observations variables) and variables which has unknown values (latent variables). these are build on combination of
@@ -26,7 +25,7 @@ forms of inference about latent variables,
 - an analytical representation of the conditional distribution
 - some sort of summary of the conditional distribution
 
----------------
+
 2. What is Gen?
 ---------------
 
@@ -35,7 +34,7 @@ including stochastic structured models, discrete and continues random variable m
 some of those types to more details,
 
 2.1. Stochastic Structured Models
-=================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These types of modeling approach brings probability factor in to calculations. they are consists of random variables
 and uncertainty parameters meaning it will consider every possible outcome. these models must cover all points of
@@ -43,19 +42,19 @@ uncertainty to draw the correct probability distribution because it's accuracy w
 for this type of modeling are monte carlo and cellular automation.
 
 2.2. Discrete and Continues Models
-==================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Models which involves with either discrete random variables or continues random variables. in contrast, if random
 variable only has countable number of distinct values called as discrete random variables, if random variable only has
 continues values meaning they are uncountable called as continues random variables.
 
 2.3. Simulators
-===============
+~~~~~~~~~~~~~~~
 
 Simulators use to study probability characteristics of statistical estimates when theoretical distribution is unknown
 but simulators can help to obtain in a closed form of that theoretical distribution.
 
------------
+
 3. Why Gen?
 -----------
 
@@ -72,7 +71,7 @@ other than flexibility gen focused on,
 - Fast converging
 
 3.1. Inference Algorithms
-=========================
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 no matter if  :math:`{p(\Theta | X)}` is going to calculate on discrete random variable which will be the summation of in
 marginalization or continues random variable where integral of in marginalization it will be impossible except very
@@ -101,7 +100,7 @@ non-symmetrical distributions.
 
 
 3.2. How Flexibility Rewards?
-=============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 some modeling capabilities enables by gen's flexibility are,
 
@@ -121,7 +120,7 @@ some modeling capabilities enables by gen's flexibility are,
 - planning and reinforcement learning
 
 3.3. Eco-system
-===============
+~~~~~~~~~~~~~~~
 
 Gen
   The main Gen package. Contains the core abstract data types for models and traces.
