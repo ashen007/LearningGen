@@ -57,8 +57,7 @@ continues values meaning they are uncountable called as continues random variabl
 ### 2.3. simulators
 
 Simulators use to study probability characteristics of statistical estimates when theoretical distribution is unknown
-but
-simulators can help to obtain in a closed form of that theoretical distribution.
+but simulators can help to obtain in a closed form of that theoretical distribution.
 
 ## 3. Why Gen?
 
