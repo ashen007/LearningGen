@@ -21,7 +21,6 @@ extensions = [
     "sphinx.ext.autosummary",  # Create neat summary tables for modules/classes/methods etc
     "sphinx.ext.intersphinx",  # Link to other project's documentation (see mapping below)
     "sphinx_autodoc_typehints",  # Automatically document param types (less noise in class signature)
-    "numpydoc"
 ]
 
 templates_path = ['_templates']
