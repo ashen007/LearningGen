@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concepts of Modeling in Gen &#8212; Learn Gen 1.0.0 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Gen.jl Workflow" href="../modeling/index.html" />
+    <link rel="prev" title="Concepts in Gen’s Language" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Learn Gen 1.0.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Pages
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../introduction/index.html">
+     What and Why
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../introduction/What_and_why.html">
+       What and Why
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Gen/index.html">
+     Gen.jl
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Gen/Problems_and_how_gen_solve.html">
+       Problems and How Gen Over Come Those
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     Concepts in Gen’s Language
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Concepts of Modeling in Gen
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../modeling/index.html">
+     Gen.jl Workflow
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../modeling/Workflow.html">
+       Gen Workflow
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Gen_jl/language_concepts/Concepts_of_gen.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#language-concepts-in-julia">
+   1. Language Concepts in Julia
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-modeling-language">
+     1.1. Dynamic Modeling Language
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trace-and-generative-functions">
+     1.2. Trace and Generative Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations-supported-by-abstract-data-types">
+     1.3. Operations Supported by Abstract Data Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dml-and-sml">
+     1.4. DML and SML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Concepts of Modeling in Gen</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#language-concepts-in-julia">
+   1. Language Concepts in Julia
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-modeling-language">
+     1.1. Dynamic Modeling Language
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trace-and-generative-functions">
+     1.2. Trace and Generative Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations-supported-by-abstract-data-types">
+     1.3. Operations Supported by Abstract Data Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dml-and-sml">
+     1.4. DML and SML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="concepts-of-modeling-in-gen">
+<h1>Concepts of Modeling in Gen<a class="headerlink" href="#concepts-of-modeling-in-gen" title="Permalink to this headline">#</a></h1>
+<div class="section" id="language-concepts-in-julia">
+<h2>1. Language Concepts in Julia<a class="headerlink" href="#language-concepts-in-julia" title="Permalink to this headline">#</a></h2>
+<div class="section" id="dynamic-modeling-language">
+<h3>1.1. Dynamic Modeling Language<a class="headerlink" href="#dynamic-modeling-language" title="Permalink to this headline">#</a></h3>
+<p>this extends the syntax of the julia language it’s called as <em>labeled random choice expression</em>, the left side of the
+expression encodes a dynamically computed address for randomly chosen values. right side of the expression encodes a
+probability distribution from which the value should be sampled. it is an error to use this syntax with the same
+address twice. addresses can be arbitrary Julia values.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="kt">address</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>a ~ bernoulli(0.5) is equivalent to a = ({:a} ~ bernoulli(0.5)), <code class="docutils literal notranslate"><span class="pre">:a</span></code> is a julia symbol</p>
+<p>users of gen can use these random choice expressions, julia expressions and julia control flow to construct a
+probabilistic models.</p>
+<p>some examples,</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">()</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;simple generative function&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">:init_n</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="ss">:result</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">([</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="o">/</span><span class="mi">19</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">20</span><span class="p">)])</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">burglary_model</span><span class="p">()</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;generative function with conditional flow control&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="c"># get random values for burglary from bernoulli distribution</span>
+<span class="w">    </span><span class="c"># which returns true/ false (success or not)</span>
+<span class="w">    </span><span class="n">burglary</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">burglary</span>
+<span class="w">        </span><span class="c"># if this is burglary get random values to</span>
+<span class="w">        </span><span class="c"># alarm state which disabled or not (true/ false)</span>
+<span class="w">        </span><span class="n">disabled</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="c"># if this is not a burglary set alarm state to disabled</span>
+<span class="w">        </span><span class="n">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="c"># reverse logic, if alarm disabled (true) alarm can not ring</span>
+<span class="w">    </span><span class="c"># other hand it is not disabled get values to weather alarm</span>
+<span class="w">    </span><span class="c"># ringed or not (true/ false)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">disabled</span>
+<span class="w">        </span><span class="n">alarm</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="n">burglary</span><span class="w"> </span><span class="mf">0.94</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mf">0.01</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">alarm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">calls</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="n">alarm</span><span class="w"> </span><span class="mf">0.7</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">nothing</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trace-and-generative-functions">
+<h3>1.2. Trace and Generative Functions<a class="headerlink" href="#trace-and-generative-functions" title="Permalink to this headline">#</a></h3>
+<p>semantics in gen is consists of two sections.</p>
+<ul class="simple">
+<li><p>dictionaries (trace): intercept program execution (random choice expressions) and record the randomly sampled value
+for each random choice in a dictionary, which maps addresses of random choices to their values (there can not be use
+same address twice in an execution, also program needs to ends with probability of 1)</p></li>
+<li><p>function to map dictionaries (generative function): function that maps dictionary (trace) to return values of the
+program.</p></li>
+</ul>
+<p>note: most notable difference between gen and other PPL which use trace-based semantics is gen’s user defined addresses
+for random choices because gen allows users to write inference code that refers specific random choices by their
+addresses.</p>
+</div>
+<div class="section" id="operations-supported-by-abstract-data-types">
+<h3>1.3. Operations Supported by Abstract Data Types<a class="headerlink" href="#operations-supported-by-abstract-data-types" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>simulation operation</p></li>
+</ul>
+<p>it is an operation of a generative function. it takes generative function as argument and values for parameters of the
+generative function, samples a dictionary of random choices according to the distribution and returns trace.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span><span class="p">,</span><span class="w"> </span><span class="n">simulate</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">()</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;simple generative function&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">:init_n</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="ss">:result</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">([</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="o">/</span><span class="mi">19</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">20</span><span class="p">)])</span>
+
+<span class="k">end</span>
+
+<span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">())</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>generate operation</p></li>
+</ul>
+<p>generate also an operation supported by generative functions. it will return an execution trace, but it did not sample
+like simulation operation, it takes samples as input and returned trace and weights. generates use for generate trace
+that satisfy set of constraints on the values of random choices. its ability is extended to take a partial dictionary
+that only contains some of the choices and fill the rest stochastically.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span><span class="p">,</span><span class="w"> </span><span class="n">choicemap</span><span class="p">,</span><span class="w"> </span><span class="n">generate</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">p_a</span><span class="p">)</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;simple generative function&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">({</span><span class="ss">:a</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="n">p_a</span><span class="p">))</span>
+<span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="ss">:b</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.6</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">val</span>
+
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">prob_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="ss">:c</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="n">prob_c</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">val</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">val</span>
+
+<span class="k">end</span>
+
+<span class="n">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">choicemap</span><span class="p">((</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">))</span>
+<span class="p">(</span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4</span><span class="p">,),</span><span class="w"> </span><span class="n">constraints</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>logpdf operation</p></li>
+</ul>
+<p>it is an operation supported by trace. which returns the log probability that the random choices in the trace would have
+been sampled. this typically the sum of log-probabilities for each random choice.</p>
+<ul class="simple">
+<li><p>choices operation</p></li>
+</ul>
+<p>this is also an operation supported by traces. which simply return choices of a given trace meaning this take trace as
+input. choice map, maps from the addresses of random choices to their values. it stored in associative tree structure
+data structure (simply a dictionary).</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span><span class="p">,</span><span class="w"> </span><span class="n">simulate</span><span class="p">,</span><span class="w"> </span><span class="n">get_choices</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">()</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;simple generative function&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">:init_n</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="ss">:result</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">([</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="o">/</span><span class="mi">19</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">20</span><span class="p">)])</span>
+
+<span class="k">end</span>
+
+<span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">())</span>
+<span class="n">get_choices</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>update operation</p></li>
+</ul>
+<p>this operation is also supported by traces. it is more complex operation than above operations supported by traces. this
+will take few arguments in order to execute the operation. this operation will return new execution traces. first
+argument is new arguments to the generative function which may be different from the arguments were stored in the
+initial execution trace.</p>
+<p>second argument is enables an optimization trick to the update operation. it is a change hint that provides optional
+information about the difference between initial state and new state of the generative function arguments. this will
+help to do this operation more efficiently.</p>
+<p>third argument is a dictionary that consists of addresses that include in initial trace and whose values should be
+change and also addresses are not include in the initial execution traces but need to add to new execution traces.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="o">:</span><span class="w"> </span><span class="n">uniform_discrete</span><span class="p">,</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">,</span><span class="w"> </span><span class="n">categorical</span><span class="p">,</span><span class="w"> </span><span class="nd">@gen</span><span class="p">,</span><span class="w"> </span><span class="n">simulate</span><span class="p">,</span><span class="w"> </span><span class="n">update</span><span class="p">,</span><span class="w"> </span><span class="n">NoChange</span><span class="p">,</span><span class="w"> </span><span class="n">choicemap</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">p_a</span><span class="p">)</span>
+<span class="w">    </span><span class="s">&quot;&quot;&quot;simple generative function&quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">({</span><span class="ss">:a</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="n">p_a</span><span class="p">))</span>
+<span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="ss">:b</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.6</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">val</span>
+
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">prob_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="ss">:c</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">bernoulli</span><span class="p">(</span><span class="n">prob_c</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">val</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">val</span>
+
+<span class="k">end</span>
+
+<span class="c"># get initial trace</span>
+<span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4</span><span class="p">,))</span>
+
+<span class="c"># update initial trace</span>
+<span class="n">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">choicemap</span><span class="p">((</span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">))</span>
+<span class="p">(</span><span class="n">new_trace</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">discard</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4</span><span class="p">,),</span><span class="w"> </span><span class="p">(</span><span class="n">NoChange</span><span class="p">(),),</span><span class="w"> </span><span class="n">constraints</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dml-and-sml">
+<h3>1.4. DML and SML<a class="headerlink" href="#dml-and-sml" title="Permalink to this headline">#</a></h3>
+<p>There are two modeling languages in gen,</p>
+<ul class="simple">
+<li><p>Dynamic Modeling Language (DML), all we so far is DML models</p></li>
+<li><p>Static Modeling Language (SML)</p></li>
+</ul>
+<p>DML is used all julia syntax including recursions. Because of that it is less efficient than SML. because DML’s high
+expressiveness makes it difficult to generate more efficient generative functions and traces. but in SML it restrict the
+set of control flow constructs and have excellent static analysis to statically specialize implementation of generative
+functions and traces to better performance. even though SML is more efficient than DML it’s complex nature make it less
+user-friendly.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># DML version of hidden markov model wich has 1000 time steps and</span>
+<span class="c"># A denotes the hidden state and B denote the observed state</span>
+<span class="c"># this model will make 2000 random choices (1000 for :z and 1000 for :y)</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">dynamic_f</span><span class="p">()</span>
+<span class="w">  </span><span class="s">&quot;&quot;&quot;hidden markov model describe the evaluation of observable events that depend</span>
+<span class="s">  on unobservable internal factors&quot;&quot;&quot;</span>
+
+<span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">1000</span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="ss">:steps</span><span class="o">=&gt;</span><span class="kt">i</span><span class="o">=&gt;:</span><span class="kt">z</span><span class="p">})</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">])</span>
+<span class="w">    </span><span class="p">{</span><span class="ss">:steps</span><span class="o">=&gt;</span><span class="kt">i</span><span class="o">=&gt;:</span><span class="kt">y</span><span class="p">}</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="o">:</span><span class="p">])</span>
+
+<span class="w">  </span><span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># SML vervsion of hidden markov model</span>
+<span class="c"># SML not supported loops insted has differnt machnism Unfold</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="p">(</span><span class="n">static</span><span class="p">)</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">static_f</span><span class="p">()</span>
+<span class="w">  </span><span class="c"># has 1000 time steps as DML version</span>
+<span class="w">  </span><span class="c"># this outer function use to call step function sequentially</span>
+<span class="w">  </span><span class="n">steps</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Unfold</span><span class="p">(</span><span class="n">step</span><span class="p">)(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+<span class="nd">@gen</span><span class="w"> </span><span class="p">(</span><span class="n">static</span><span class="p">)</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">prev</span><span class="p">)</span>
+<span class="w">  </span><span class="c"># use same random choices as DML version</span>
+<span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">])</span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">categorical</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="o">:</span><span class="p">])</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">z</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Concepts in Gen’s Language</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../modeling/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gen.jl Workflow</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By ashen007<br/>
+  
+      &copy; Copyright 2023, ashen007.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
