@@ -1,5 +1,17 @@
 # Gen workflow
 
+<!-- TOC -->
+* [Gen workflow](#gen-workflow)
+  * [1. typical workflow](#1-typical-workflow)
+    * [1.1. define generative model](#11-define-generative-model)
+      * [1.1.1. random choice expressions](#111-random-choice-expressions)
+      * [1.1.2. rules for define generative function with DML](#112-rules-for-define-generative-function-with-dml)
+    * [1.2. define inference program](#12-define-inference-program)
+      * [1.2.1. some inference algorithms](#121-some-inference-algorithms)
+        * [1.2.1.1 importance sampling](#1211-importance-sampling)
+        * [1.2.1.1 markov chain monte carlo](#1211-markov-chain-monte-carlo)
+<!-- TOC -->
+
 ## 1. typical workflow
 
 ### 1.1. define generative model
