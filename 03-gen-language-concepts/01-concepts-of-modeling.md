@@ -32,7 +32,7 @@ some examples,
 ```julia
 using Gen: uniform_discrete, bernoulli, categorical, @gen
 
-@gen function f(p)
+@gen function f()
     """simple generative function"""
     
     n = {:init_n} ~ uniform_discrete(1, 10)
@@ -104,7 +104,7 @@ generative function, samples a dictionary of random choices according to the dis
 ```julia
 using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate
 
-@gen function f(p)
+@gen function f()
     """simple generative function"""
     
     n = {:init_n} ~ uniform_discrete(1, 10)
@@ -126,12 +126,12 @@ that only contains some of the choices and fill the rest stochastically.
 ```julia
 using Gen: uniform_discrete, bernoulli, categorical, @gen, choicemap, generate
 
-@gen function f(p)
+@gen function f(p_a)
     """simple generative function"""
     
     val = true
     
-    if ({:a} ~ bernoulli(prob_a))
+    if ({:a} ~ bernoulli(p_a))
         val = ({:b} ~ bernoulli(0.6)) && val
         
     end
@@ -161,7 +161,7 @@ data structure (simply a dictionary).
 ```julia
 using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate, get_choices
 
-@gen function f(p)
+@gen function f()
     """simple generative function"""
     
     n = {:init_n} ~ uniform_discrete(1, 10)
@@ -170,7 +170,7 @@ using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate, get_choices
     
 end
 
-trace = simulate(f, (0.4,))
+trace = simulate(f, ())
 get_choices(trace)
 ```
 
@@ -191,12 +191,12 @@ change and also addresses are not include in the initial execution traces but ne
 ```julia
 using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate, update, NoChange, choicemap
 
-@gen function f(p)
+@gen function f(p_a)
     """simple generative function"""
     
     val = true
     
-    if ({:a} ~ bernoulli(prob_a))
+    if ({:a} ~ bernoulli(p_a))
         val = ({:b} ~ bernoulli(0.6)) && val
         
     end
