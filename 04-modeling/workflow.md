@@ -185,7 +185,7 @@ example,
 ```julia
 # generative function definition for linear regression model
 
-@gen function model(x)
+@gen function model(xs)
     """fitting line with data"""
     
     # proposal distribution in other words priors (or belifes)
