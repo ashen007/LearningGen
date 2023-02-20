@@ -113,7 +113,7 @@ using Gen: uniform_discrete, bernoulli, categorical, @gen, simulate
     
 end
 
-trace = simulate(f, (0.4,))
+trace = simulate(f, ())
 ```
 
 - generate operation
