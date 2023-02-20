@@ -16,15 +16,4 @@ aspects of inference.
    :maxdepth: 1
    :caption: Contents:
 
-   introduction/index
-   Gen/index
-   language_concepts/index
-   modeling/index
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Gen_jl/index

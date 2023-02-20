@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-title
-=====================
+Concepts in Gen's Language
+==========================
 
 .. toctree::
    :maxdepth: 2
@@ -12,11 +12,12 @@ title
 
    Concepts_of_gen
 
-.. contents:: What Inside
-   :depth: 3
+What Inside
+-----------
 
-   1. Language concepts in julia
-      1.1. Dynamic modeling language
-      1.2. Trace and generative functions
-      1.3. Operations supported by abstract data types
-      1.4. DML and SML
+* Language concepts in julia
+
+   * Dynamic modeling language
+   * Trace and generative functions
+   * Operations supported by abstract data types
+   * DML and SML
