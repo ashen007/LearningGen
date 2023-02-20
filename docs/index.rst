@@ -6,10 +6,20 @@
 Welcome to Learn Gen!
 =====================
 
+Probabilistic modeling and inference are core tools in diverse fields including statistics, machine learning, computer
+vision, cognitive science, robotics, natural language processing, and artificial intelligence. implementing inference
+algorithms is often difficult and error prone. Gen simplifies the use of probabilistic modeling and inference, by
+providing modeling languages in which users express models, and high-level programming constructs that automate
+aspects of inference.
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   introduction/index
+   Gen/index
+   language_concepts/index
+   modeling/index
 
 
 Indices and tables
